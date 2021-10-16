@@ -1,0 +1,2 @@
+[debug] Created transactional ClassFileManager with tempDir = /Users/manikhossain/IdeaProjects/ETL-DataPipeLine-Avro_Schema_Registry-Spark-Kafka-HDFS-Scala/project/target/scala-2.12/sbt-1.0/classes.bak
+[debug] Removing the temporary directory used for backing up class files: /Users/manikhossain/IdeaProjects/ETL-DataPipeLine-Avro_Schema_Registry-Spark-Kafka-HDFS-Scala/project/target/scala-2.12/sbt-1.0/classes.bak

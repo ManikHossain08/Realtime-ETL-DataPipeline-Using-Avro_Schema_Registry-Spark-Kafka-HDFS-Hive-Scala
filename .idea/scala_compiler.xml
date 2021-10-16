@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="sbt 1" modules="course5project,etl-datapipeline-avro_schema_registry-spark-kafka-hdfs-scala_9895" />
+  </component>
+</project>
