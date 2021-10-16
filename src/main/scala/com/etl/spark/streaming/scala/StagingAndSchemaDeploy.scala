@@ -6,10 +6,7 @@ import scala.collection.immutable.HashMap
 
 object StagingAndSchemaDeploy extends HadoopClientConfig {
   private val localSysDir = "./data"
-  private val batchFiles = HashMap(
-    "trips" -> "trips.txt", "routes" -> "routes.txt", "calendar_dates" -> "calendar_dates.txt",
-    "enriched_stop_time" -> ""
-  )
+  private val batchFiles = HashMap("station_information" -> "enriched_station_information.csv")
 
   def putFilesToHDFS(): Unit = {
     deleteStagingDir(stagingDir)
