@@ -36,7 +36,7 @@ object SparkStreamingMain extends App with SparkAppConfig with KafkaConsumerConf
           |   et.wheelchairAccessible
           | from tblStopTime st
           | left join tblEnrichedTrip et
-          | on st.tripId == et.tripId
+          | on st.tripId = et.tripId
           |""".stripMargin
       )
       partitionAndStoreToHdfs_Soln1(enrichedStopTime)
