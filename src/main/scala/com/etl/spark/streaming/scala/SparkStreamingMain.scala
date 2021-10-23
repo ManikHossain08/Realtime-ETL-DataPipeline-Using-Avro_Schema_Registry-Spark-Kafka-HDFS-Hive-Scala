@@ -21,9 +21,8 @@ object SparkStreamingMain extends App with SparkAppConfig with KafkaConsumerConf
       val stopTimeDf = stopTimeRDD.map(Trip(_)).toDF()
       stopTimeDf.createOrReplaceTempView("tblTrips")
       val enrichedTrips = spark.sql(
-        """SELECT
-          |   *
-          |   from tblTrips
+        """
+          |   SELECT * from tblTrips
           |   cross join tblEnrichedStationInfo
           |""".stripMargin
       )
@@ -34,9 +33,11 @@ object SparkStreamingMain extends App with SparkAppConfig with KafkaConsumerConf
   ssc.awaitTermination()
 
   def partitionAndStoreToHdfs_Soln1(enrichedTripsDS: DataFrame): Unit = {
-    enrichedTripsDS
-      .write
-      .mode(SaveMode.Append)
-      .csv(s"$stagingDir/enriched_trips")
+    if (enrichedTripsDS.count() > 0) {
+      enrichedTripsDS
+        .write
+        .mode(SaveMode.Append)
+        .csv(s"$stagingDir/enriched_trips")
+    }
   }
 }

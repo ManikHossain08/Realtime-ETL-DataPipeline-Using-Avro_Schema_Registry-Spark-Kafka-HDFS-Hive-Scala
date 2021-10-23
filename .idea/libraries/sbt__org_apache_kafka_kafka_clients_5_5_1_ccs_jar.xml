@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: org.apache.kafka:kafka-clients:5.5.1-ccs:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/packages.confluent.io/maven/org/apache/kafka/kafka-clients/5.5.1-ccs/kafka-clients-5.5.1-ccs.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/packages.confluent.io/maven/org/apache/kafka/kafka-clients/5.5.1-ccs/kafka-clients-5.5.1-ccs-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/packages.confluent.io/maven/org/apache/kafka/kafka-clients/5.5.1-ccs/kafka-clients-5.5.1-ccs-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
