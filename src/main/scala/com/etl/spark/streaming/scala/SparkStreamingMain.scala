@@ -22,15 +22,15 @@ object SparkStreamingMain extends App with SparkAppConfig with KafkaConfig with 
   kafkaConsumerStream
     .map(_.value())
     .foreachRDD { stopTimeRDD =>
-      val stopTimeDf = stopTimeRDD.map(Trip(_)).toDF()
-      stopTimeDf.createOrReplaceTempView("tblTrips")
-      val enrichedTrips = spark.sql(
+      val tripsDF = stopTimeRDD.map(Trip(_)).toDF()
+      tripsDF.createOrReplaceTempView("tblTrip")
+      val enrichedTripsDF = spark.sql(
         """
-          |   SELECT * from tblTrips
+          |   SELECT * from tblTrip
           |   cross join tblEnrichedStationInfo
           |""".stripMargin
       )
-      produceGenericRecordsToKafka(enrichedTrips)
+      produceKafkaMsgFromGenericRecords(enrichedTripsDF)
     }
 
   ssc.start()
@@ -38,7 +38,7 @@ object SparkStreamingMain extends App with SparkAppConfig with KafkaConfig with 
   kafkaProducer.flush()
   kafkaProducer.close()
 
-  def produceGenericRecordsToKafka(enrichedTripsDF: DataFrame): Unit = {
+  def produceKafkaMsgFromGenericRecords(enrichedTripsDF: DataFrame): Unit = {
 
     val enrichedTripsList: List[String] =
       enrichedTripsDF
@@ -47,8 +47,6 @@ object SparkStreamingMain extends App with SparkAppConfig with KafkaConfig with 
         .collectAsList()
         .asScala
         .toList
-    enrichedTripsList.foreach(println)
-
 
     val enrichedTripGenericRecordList = enrichedTripsList
       .map(_.split(",", -1))
@@ -75,7 +73,5 @@ object SparkStreamingMain extends App with SparkAppConfig with KafkaConfig with 
       .map(record => new ProducerRecord[String, GenericRecord]("test3_enriched_trip",
         record.get("station_id").toString, record)
       ).foreach(kafkaProducer.send)
-
-    println("end of another loop")
   }
 }
