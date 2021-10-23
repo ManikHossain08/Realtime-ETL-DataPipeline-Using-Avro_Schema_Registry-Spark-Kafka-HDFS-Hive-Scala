@@ -12,6 +12,7 @@ import java.util.Properties
 
 trait KafkaConfig extends SparkAppConfig {
 
+  val topicName = "bdsf2001_manik_trip"
   val kafkaConfig: Map[String, String] = Map(
     ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> "localhost:9092",
     ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer].getName,
@@ -20,7 +21,6 @@ trait KafkaConfig extends SparkAppConfig {
     ConsumerConfig.AUTO_OFFSET_RESET_CONFIG -> "earliest",
     ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG -> "false"
   )
-  val topicName = "bdsf2001_manik_trip"
   val kafkaConsumerStream: InputDStream[ConsumerRecord[String, String]] = KafkaUtils.createDirectStream(
     ssc,
     LocationStrategies.PreferConsistent,
@@ -33,5 +33,4 @@ trait KafkaConfig extends SparkAppConfig {
   kafkaProducerProperties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[KafkaAvroSerializer].getName)
   kafkaProducerProperties.setProperty(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081")
   val kafkaProducer = new KafkaProducer[String, GenericRecord](kafkaProducerProperties)
-
 }
