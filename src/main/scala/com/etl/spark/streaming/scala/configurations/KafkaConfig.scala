@@ -10,7 +10,7 @@ import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, Loca
 
 import java.util.Properties
 
-trait KafkaProducerConsumerConfig extends SparkAppConfig {
+trait KafkaConfig extends SparkAppConfig {
 
   val kafkaConfig: Map[String, String] = Map(
     ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> "localhost:9092",
