@@ -20,45 +20,51 @@ object StationInformation {
 case class Trip(start_date: String,
                 start_station_code: Int,
                 end_date: String,
-                end_station_code: String,
+                end_station_code: Int,
                 duration_sec: Int,
                 is_member: Int
-                   )
+               )
 
 object Trip {
   def apply(line: String): Trip = {
     val fields: Array[String] = line.split(",", -1)
-    Trip(fields(0), fields(1).toInt, fields(2), fields(3), fields(4).toInt, fields(5).toInt)
+    Trip(fields(0), fields(1).toInt, fields(2), fields(3).toInt, fields(4).toInt, fields(5).toInt)
   }
 }
 
-case class EnrichedStopTime(tripId: String,
-                            serviceId: String,
-                            routeId: Int,
-                            tripHeadSign: String,
-                            date: Option[String],
-                            exceptionType: Option[Int],
-                            routeLongName: String,
-                            routeColor: String,
-                            arrivalTime: String,
-                            departureTime: String,
-                            stopId: String,
-                            stopSequence: Int,
-                            wheelchairAccessible: Boolean)
+case class EnrichedTrip(start_date: String,
+                        start_station_code: Int,
+                        end_date: String,
+                        end_station_code: Int,
+                        duration_sec: Int,
+                        is_member: Int,
+                        system_id: String,
+                        timezone: String,
+                        station_id: Int,
+                        name: String,
+                        short_name: String,
+                        lat: Double,
+                        lon: Double,
+                        capacity: Int
+                       )
 
-object EnrichedStopTime {
-  def toCsv(enrichedStopTime: EnrichedStopTime): String = {
-    s"${enrichedStopTime.tripId}," +
-      s"${enrichedStopTime.serviceId}," +
-      s"${enrichedStopTime.routeId}," +
-      s"${enrichedStopTime.tripHeadSign}," +
-      s"${enrichedStopTime.date.getOrElse("")}," +
-      s"${enrichedStopTime.exceptionType.getOrElse("")}," +
-      s"${enrichedStopTime.routeLongName}," +
-      s"${enrichedStopTime.routeColor}," +
-      s"${enrichedStopTime.arrivalTime}," +
-      s"${enrichedStopTime.departureTime}," +
-      s"${enrichedStopTime.stopId}," +
-      s"${enrichedStopTime.stopSequence}"
+
+object EnrichedTrip {
+
+  def toCsv(enrichedTrip: EnrichedTrip): String = {
+    s"${enrichedTrip.start_date}," +
+      s"${enrichedTrip.start_station_code}," +
+      s"${enrichedTrip.end_date}," +
+      s"${enrichedTrip.end_station_code}," +
+      s"${enrichedTrip.duration_sec}," +
+      s"${enrichedTrip.is_member}," +
+      s"${enrichedTrip.system_id}," +
+      s"${enrichedTrip.timezone}," +
+      s"${enrichedTrip.station_id}," +
+      s"${enrichedTrip.name}," +
+      s"${enrichedTrip.short_name}," +
+      s"${enrichedTrip.lat}," +
+      s"${enrichedTrip.lon}," +
+      s"${enrichedTrip.capacity}"
   }
 }
