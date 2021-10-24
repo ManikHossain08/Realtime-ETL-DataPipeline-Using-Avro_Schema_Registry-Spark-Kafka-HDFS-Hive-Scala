@@ -4,7 +4,7 @@ import com.etl.spark.streaming.scala.configurations.HadoopClientConfig
 import org.apache.hadoop.fs.Path
 import scala.collection.immutable.HashMap
 
-object StagingAndSchemaDeploy extends HadoopClientConfig {
+object AutoStaging extends HadoopClientConfig {
   private val localSysDir = "./data"
   private val batchFiles = HashMap("station_information" -> "enriched_station_information.csv")
 

@@ -7,7 +7,7 @@ import org.apache.spark.SparkContext
 trait SparkAppConfig {
   val spark: SparkSession = SparkSession
     .builder()
-    .appName("Spark Streaming Project")
+    .appName("Spark Streaming With Avro Schema Registry")
     .master("local[*]")
     .getOrCreate()
 

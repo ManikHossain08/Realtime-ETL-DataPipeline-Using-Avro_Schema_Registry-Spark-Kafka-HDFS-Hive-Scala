@@ -6,16 +6,16 @@ import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.spark.sql.DataFrame
 import scala.collection.JavaConverters._
 
-object SparkStreamingMain extends App with SparkAppConfig with KafkaConfig with HadoopClientConfig with Base {
+object EntryPoint extends App with SparkAppConfig with KafkaConfig with HadoopClientConfig with Base {
 
   import spark.implicits._
 
-  StagingAndSchemaDeploy.putFilesToHDFS()
+  AutoStaging.putFilesToHDFS()
   //EnrichedTripsSchemaRegistry.registerAvroSchema()
 
   val enrichedStationInfoDF = spark.read
     .option("header", value = "true")
-    .schema(StationInformation.stationSchema)
+    .schema(StationInformation.stationInfoSchema)
     .csv(s"$stagingDir/station_information/enriched_station_information.csv")
   enrichedStationInfoDF.createOrReplaceTempView("tblEnrichedStationInfo")
 

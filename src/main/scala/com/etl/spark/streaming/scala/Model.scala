@@ -3,7 +3,7 @@ package com.etl.spark.streaming.scala
 import org.apache.spark.sql.types.{DoubleType, IntegerType, StringType, StructField, StructType}
 
 object StationInformation {
-  val stationSchema: StructType = StructType(
+  val stationInfoSchema: StructType = StructType(
     List(
       StructField("system_id", StringType, nullable = false),
       StructField("timezone", StringType, nullable = false),

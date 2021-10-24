@@ -12,8 +12,8 @@ import java.util.Properties
 
 trait KafkaConfig extends SparkAppConfig {
 
-  val topicName = "bdsf2001_manik_trip"
-  val kafkaConfig: Map[String, String] = Map(
+  val kafkaTopicName = "bdsf2001_manik_trip"
+  val kafkaConsumerConfig: Map[String, String] = Map(
     ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> "localhost:9092",
     ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer].getName,
     ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer].getName,
@@ -24,7 +24,7 @@ trait KafkaConfig extends SparkAppConfig {
   val kafkaConsumerStream: InputDStream[ConsumerRecord[String, String]] = KafkaUtils.createDirectStream(
     ssc,
     LocationStrategies.PreferConsistent,
-    ConsumerStrategies.Subscribe[String, String](List(topicName), kafkaConfig)
+    ConsumerStrategies.Subscribe[String, String](List(kafkaTopicName), kafkaConsumerConfig)
   )
 
   val kafkaProducerProperties = new Properties()
