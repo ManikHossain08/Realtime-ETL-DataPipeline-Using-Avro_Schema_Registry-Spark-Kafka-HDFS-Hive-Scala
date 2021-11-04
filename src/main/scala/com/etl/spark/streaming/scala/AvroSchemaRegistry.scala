@@ -12,7 +12,10 @@ object AvroSchemaRegistry {
   val subjectName: String = "bdsf2001_manik_enriched_trip-value"
   val srClient = new CachedSchemaRegistryClient("http://localhost:8081", 10)
   val enrichedTripMetadata: SchemaMetadata = srClient.getLatestSchemaMetadata(subjectName)
-  val enrichedTripSchema: Schema = srClient.getSchemaById(enrichedTripMetadata.getId).rawSchema().asInstanceOf[Schema]
+  val enrichedTripAvroSchema: Schema = srClient
+    .getSchemaById(enrichedTripMetadata.getId)
+    .rawSchema()
+    .asInstanceOf[Schema]
 
   def registerAvroSchema(): Unit = {
 

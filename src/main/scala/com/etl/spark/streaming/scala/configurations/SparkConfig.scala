@@ -4,7 +4,7 @@ import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.SparkContext
 
-trait SparkAppConfig {
+trait SparkConfig {
   val spark: SparkSession = SparkSession
     .builder()
     .appName("Spark Streaming With Avro Schema Registry")

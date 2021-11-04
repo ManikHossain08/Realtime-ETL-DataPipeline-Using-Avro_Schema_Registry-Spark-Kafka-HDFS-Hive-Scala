@@ -3,7 +3,7 @@ package com.etl.spark.streaming.scala.configurations
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.{FileSystem, Path}
 
-trait HadoopClientConfig {
+trait HadoopConfig {
   val stagingDir = "/user/bdsf2001/manik/project9_3"
 
   val conf = new Configuration()

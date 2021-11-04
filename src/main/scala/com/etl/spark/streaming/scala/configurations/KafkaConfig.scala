@@ -10,7 +10,7 @@ import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, Loca
 
 import java.util.Properties
 
-trait KafkaConfig extends SparkAppConfig {
+trait KafkaConfig extends SparkConfig {
 
   val kafkaTopicName = "bdsf2001_manik_trip"
   val kafkaConsumerConfig: Map[String, String] = Map(
