@@ -10,14 +10,11 @@ object EntryPoint extends App with SparkAppConfig with KafkaConfig with HadoopCl
 
   import spark.implicits._
 
-  AutoStaging.putFilesToHDFS()
-  //EnrichedTripsSchemaRegistry.registerAvroSchema()
-
-  val enrichedStationInfoDF = spark.read
-    .option("header", value = "true")
-    .schema(StationInformation.stationInfoSchema)
-    .csv(s"$stagingDir/station_information/enriched_station_information.csv")
-  enrichedStationInfoDF.createOrReplaceTempView("tblEnrichedStationInfo")
+  val enrichedStationInfoDF = spark
+    .read
+    .format("parquet")
+    .load(s"$stagingDir/enriched_station_information")
+    .createOrReplaceTempView("tblEnrichedStationInfo")
 
   kafkaConsumerStream
     .map(_.value())
@@ -70,7 +67,7 @@ object EntryPoint extends App with SparkAppConfig with KafkaConfig with HadoopCl
       }
 
     enrichedTripGenericRecordList
-      .map(record => new ProducerRecord[String, GenericRecord]("test3_enriched_trip",
+      .map(record => new ProducerRecord[String, GenericRecord]("bdsf2001_manik_enriched_trip",
         record.get("station_id").toString, record)
       ).foreach(kafkaProducer.send)
   }

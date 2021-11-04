@@ -10,4 +10,5 @@ trait Base {
   Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
   Logger.getLogger("org.spark-project").setLevel(Level.WARN)
   Logger.getLogger("org.apache.kafka").setLevel(Level.WARN)
+  Logger.getLogger("io.confluent").setLevel(Level.WARN)
 }
