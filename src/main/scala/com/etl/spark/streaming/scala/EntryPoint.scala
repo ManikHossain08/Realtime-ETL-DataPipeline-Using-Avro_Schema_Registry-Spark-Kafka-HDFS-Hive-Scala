@@ -1,16 +1,16 @@
 package com.etl.spark.streaming.scala
 
-import com.etl.spark.streaming.scala.configurations.{Base, HadoopClientConfig, KafkaConfig, SparkAppConfig}
+import com.etl.spark.streaming.scala.configurations.{Base, HadoopConfig, KafkaConfig, SparkConfig}
 import org.apache.avro.generic.{GenericRecord, GenericRecordBuilder}
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.spark.sql.DataFrame
 import scala.collection.JavaConverters._
 
-object EntryPoint extends App with SparkAppConfig with KafkaConfig with HadoopClientConfig with Base {
+object EntryPoint extends App with SparkConfig with KafkaConfig with HadoopConfig with Base {
 
   import spark.implicits._
 
-  val enrichedStationInfoDF = spark
+  spark
     .read
     .format("parquet")
     .load(s"$stagingDir/enriched_station_information")
@@ -48,7 +48,7 @@ object EntryPoint extends App with SparkAppConfig with KafkaConfig with HadoopCl
     val enrichedTripGenericRecordList = enrichedTripsList
       .map(_.split(",", -1))
       .map { fields =>
-        new GenericRecordBuilder(AvroSchemaRegistry.enrichedTripSchema)
+        new GenericRecordBuilder(AvroSchemaRegistry.enrichedTripAvroSchema)
           .set("start_date", fields(0))
           .set("start_station_code", fields(1).toInt)
           .set("end_date", fields(2))
