@@ -33,9 +33,17 @@ In order to start the project, you need to prepare the environment which is
 • Prepare the input
 • Register Avro schema
 
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/45977153/141873239-4820964a-64c9-4a76-9df8-9fce4f698202.png">
+<img width="1069" alt="image" src="https://user-images.githubusercontent.com/45977153/141873581-e4becb03-0979-4bbc-a7c0-d2dd7368f5c8.png">
 
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/45977153/141873277-a7720def-9418-449d-81c4-31327721f802.png">
-  
+<img width="1069" alt="image" src="https://user-images.githubusercontent.com/45977153/141873640-c51c49d4-3998-4b07-950a-fc715673b15b.png">
+
+<img width="1069" alt="image" src="https://user-images.githubusercontent.com/45977153/141873691-4588542f-06cb-4f4f-8197-72703662e053.png">
+
+<img width="1069" alt="image" src="https://user-images.githubusercontent.com/45977153/141873744-fe51099f-bc8c-4c03-ad0e-cd206e3f83c3.png">
+
+<img width="1069" alt="image" src="https://user-images.githubusercontent.com/45977153/141873785-8d4c8534-6bf5-42d4-92d3-16dd17cdde29.png">
+
+
+
  
 
