@@ -2,6 +2,12 @@ package com.etl.spark.streaming.scala
 
 import org.apache.spark.sql.types.{DoubleType, IntegerType, StringType, StructField, StructType}
 
+/**
+ * THIS CASE CLASS IS UNUSED MOST OF THE CASES WHICH WILL REDUCE CODE COMPLEXITY.
+ * BUT KEEP THIS SECTIONS WHICH ARE UNUSED BECAUSE LATER IT WILL KEEP ME REMINDER THAT THESE TYPES OF CODE IS
+ * BAD TO PRACTICE IN REAL LIFE/PROFESSIONAL LIFE.
+ */
+
 object StationInformation {
   val stationInfoSchema: StructType = StructType(
     List(
