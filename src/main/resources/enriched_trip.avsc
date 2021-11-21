@@ -1,6 +1,6 @@
 {
   "type": "record",
-  "name": "bdsf2001_manik_enriched_trip-value",
+  "name": "EnrichedTripValue",
   "namespace": "ca.mcit.bigdata.avro.schema",
   "fields": [
     { "name": "start_date", "type": "string" },
