@@ -1,5 +1,8 @@
 # RealTime ETL-DataPipeLine-Using-Avro_Schema_Registry-Spark-Kafka-HDFS-Hive-Scala
 
+<img width="522" alt="image" src="https://user-images.githubusercontent.com/45977153/146771359-e209263a-5a59-4305-b488-0b72f2998143.png">
+
+
 # Summary
 In this sprint, you need to use your expertise in Spark and Kafka to process “Trip” data with “Station
 Information”.
